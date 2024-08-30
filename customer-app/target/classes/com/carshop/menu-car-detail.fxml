@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+
+
+<VBox spacing="30" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.carshop.MenuCarDetailController">
+
+    <Label fx:id="title" style="-fx-font-size: 18; -fx-font-weight: bold;" />
+   
+    <HBox spacing="20">
+        <VBox >
+            <ImageView fx:id="carImage" fitHeight="300" fitWidth="350.0" preserveRatio="true" />
+        </VBox>
+        
+        <VBox spacing="15">  
+            <Label text="Select Your Filters" style="-fx-font-size: 14; -fx-font-weight: bold;" />   
+
+            <GridPane hgap="10" vgap="10">
+                <Label text="Color:" minWidth="100" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <FlowPane fx:id="ColorFlow" hgap="10"  GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                <Label text="Engine:" minWidth="100" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <FlowPane fx:id="EngineFlow" hgap="10"  GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        
+                <Label text="Transmission:" minWidth="100" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <FlowPane fx:id="TransmissionFlow" hgap="10"  GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                <Button text="Apply Filter" onAction="#handleApply" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+            </GridPane>
+
+            <TableView fx:id="carTable">
+                <columns>
+                    <TableColumn fx:id="colorColumn" text="Color"/>
+                    <TableColumn fx:id="engineColumn" text="Engine"/>
+                    <TableColumn fx:id="transColumn" text="Transmission"/>
+                    <TableColumn fx:id="qtyColumn" text="Quantity"/>
+                </columns>
+            </TableView>
+            
+            <GridPane hgap="40">
+                <Button fx:id="buyButton" onAction="#handleBuy" text="Buy" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <Button fx:id="backButton" onAction="#handleBack" text="Back" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            </GridPane>
+            
+        </VBox>
+    </HBox>
+
+   <padding>
+      <Insets bottom="20.0" left="50.0" right="20.0" top="20.0" />
+   </padding>
+
+</VBox>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.carshop.MakePaymentController" 
+      spacing="10" alignment="CENTER" style="-fx-padding: 20;">
+    <Label fx:id="title" text="Do you want to confirm this payment" style="-fx-font-size: 18; -fx-font-weight: bold;"/>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Label text="Enter your Transaction Code:"/>
+        <TextField fx:id="transcationCode"/>
+    </HBox>
+
+    <HBox spacing="10" alignment="CENTER">
+        <Button text="Confirm Payment" onAction="#handleConfirm"/>
+        <Button text="Cancel" onAction="#handleCancelButton"/>
+    </HBox>
+</VBox>
