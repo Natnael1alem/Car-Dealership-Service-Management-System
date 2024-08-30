@@ -1,4 +1,4 @@
-CarShop JavaFX Application
+#CarShop JavaFX Application
 
 A comprehensive car shop e-commerce application developed in JavaFX. This project includes both user and admin versions for a fully functional car shop experience.
 
