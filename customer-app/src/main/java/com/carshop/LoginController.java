@@ -34,16 +34,16 @@ public class LoginController {
     private TextField passwordField;
 
     @FXML
+    private Label message;
+
+    @FXML
     public void handleLogin() throws IOException{
         String userField = userIDField.getText();
         String passField = passwordField.getText();
-
-        System.out.println(userField + " " + passField);
         
         try {
             int enteredUserID = Integer.parseInt(userField);
             for (User user : userList) {
-                System.out.println(user.getUserID() + " " + user.getUserPass());
                 if (enteredUserID == user.getUserID()) {
                     if (passField.equals(user.getUserPass())){
                         System.out.println("Successfully Authenticated");
@@ -52,11 +52,17 @@ public class LoginController {
                         return;
                     }
                 }
-            }  
+            }
         } catch (NumberFormatException e) {
             e.printStackTrace();
-        } 
+        }
+        message.setText("Incorrect user id or password");
         System.out.println("Incorrect user id or password");        
     }
+
+    // @FXML
+    // public void handleSignup() throws IOException{
+      
+    // }
    
 }

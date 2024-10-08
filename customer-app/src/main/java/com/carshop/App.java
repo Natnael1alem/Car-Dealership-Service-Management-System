@@ -45,13 +45,9 @@ public class App extends Application {
         App.setDetail("Log-in", root);
     }
 
-
-
     public static void main(String[] args) {
         launch();
     }
-
-
 
     static void setCurrentUser(User user) {
         currentUser = user;
