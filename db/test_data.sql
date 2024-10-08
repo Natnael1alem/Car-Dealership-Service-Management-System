@@ -57,12 +57,12 @@ INSERT INTO CarInventory (CarTypeID) VALUES
 (1), (1), (2), (2), (3), (3), (4), (4), (5), (5);
 
 -- Insert users
-INSERT INTO users (username, password, email) VALUES
-('john_doe', '1234', 'john@example.com'),
-('jane_smith', '1234', 'jane@example.com'),
-('bob_johnson', '1234', 'bob@example.com'),
-('alice_williams', '1234', 'alice@example.com'),
-('charlie_brown', '1234', 'charlie@example.com');
+INSERT INTO users (username, FName, LName, password, email) VALUES
+('1', 'John', 'Doe', '1234', 'john@example.com'),
+('2', 'Jane', 'Smith', '1234', 'jane@example.com'),
+('3', 'Bob', 'Johnson', '1234', 'bob@example.com'),
+('4', 'Alice', 'Williams', '1234', 'alice@example.com'),
+('5', 'Charlie', 'Brown', '1234', 'charlie@example.com');
 
 -- Insert Accessory
 INSERT INTO Accessory (AccessoryName, description, Price) VALUES
@@ -80,8 +80,8 @@ INSERT INTO accessories (AccessoryID) VALUES
 (1), (1), (1), (2), (2), (3), (3), (3), (4), (5), (6), (7), (7), (8), (8), (8);
 
 -- Insert user car purchases
-INSERT INTO user_cars (user_id, CarTypeID) VALUES
-(1, 1), (1, 1), (1, 3), (2, 2); 
+INSERT INTO user_cars (username, CarTypeID) VALUES
+('1', 1), ('1', 1), ('1', 3), ('2', 2); 
 
 -- Insert user car accessory purchases
 INSERT INTO user_car_accessories (user_car_id, AccessoryID) VALUES

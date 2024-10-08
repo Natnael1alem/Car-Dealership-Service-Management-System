@@ -41,7 +41,7 @@ public class BuyCarController {
         engine.setText(selectedCar.getEngine());
         transmission.setText(selectedCar.getTransmission());
         price.setText(Double.toString(selectedCar.getPrice()));
-        userid.setText(Integer.toString(user.getUserID()));
+        userid.setText(user.getUsername());
     }
 
     @FXML

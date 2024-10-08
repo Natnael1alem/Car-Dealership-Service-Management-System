@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox alignment="CENTER" spacing="10" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="com.carshop.UserAuthController">
+
+   <Label fx:id="s_title" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Sign-up Screen" />
+
+   <GridPane hgap="10" vgap="10" alignment="CENTER">
+      <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+      <TextField fx:id="newUsernameField" GridPane.hgrow="ALWAYS" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+
+      <Label text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+      <TextField fx:id="newFNameField" GridPane.hgrow="ALWAYS" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+      <Label text="Last Name:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+      <TextField fx:id="newLNameField" GridPane.hgrow="ALWAYS" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+
+      <Label text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+      <TextField fx:id="newEmailField" GridPane.hgrow="ALWAYS" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+
+      <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+      <TextField fx:id="newPassField" GridPane.hgrow="ALWAYS" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+
+      <Label text="Confirm Password:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+      <TextField fx:id="confirmNewPassField" GridPane.hgrow="ALWAYS" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+      <VBox.margin>
+         <Insets left="170.0" right="170.0" top="40" />
+      </VBox.margin>
+   </GridPane>
+
+   <Label fx:id="s_message">
+      <style>
+         -fx-font-size: 11px;
+         -fx-text-fill: red;
+      </style>
+   </Label>
+
+   <Button onAction="#handleSignup" text="Sign-up"/>
+   <Button onAction="#handleGoLogin" text="Go to Log-in"/>
+
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>

@@ -8,13 +8,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" spacing="10" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="com.carshop.LoginController">
+<VBox alignment="CENTER" spacing="10" xmlns:fx="http://javafx.com/fxml/1"  fx:controller="com.carshop.UserAuthController">
 
-   <Label fx:id="title" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Log-in Screen" />
+   <Label fx:id="l_title" style="-fx-font-size: 18; -fx-font-weight: bold;" text="Log-in Screen" />
 
    <GridPane hgap="10" vgap="10" alignment="CENTER">
       <Label text="User ID:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-      <TextField fx:id="userIDField" GridPane.hgrow="ALWAYS" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+      <TextField fx:id="usernameField" GridPane.hgrow="ALWAYS" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
       <Label text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
       <TextField fx:id="passwordField" GridPane.hgrow="ALWAYS" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 
@@ -23,7 +23,7 @@
       </VBox.margin>
    </GridPane>
 
-   <Label fx:id="message">
+   <Label fx:id="l_message">
       <style>
          -fx-font-size: 11px;
          -fx-text-fill: red;
@@ -31,7 +31,7 @@
    </Label>
 
    <Button onAction="#handleLogin" text="Log-in"/>
-   <!-- <Button onAction="#handleSignup" text="Sign-up"/> -->
+   <Button onAction="#handleGoSignup" text="Go to Sign-up"/>
 
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

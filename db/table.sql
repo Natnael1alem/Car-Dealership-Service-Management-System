@@ -24,9 +24,10 @@ CREATE TABLE accessories (
 );
 
 CREATE TABLE users (
-    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) PRIMARY KEY,
     password VARCHAR(20) NOT NULL,
-    username VARCHAR(50) NOT NULL UNIQUE,
+    FName VARCHAR(50) NOT NULL,
+    LName VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -58,19 +59,19 @@ CREATE TABLE CarInventory (
 
 CREATE TABLE user_cars (
     user_car_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
+    username VARCHAR(50) NOT NULL,
     CarTypeID INT NOT NULL,
     purchase_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (username) REFERENCES users(username),
     FOREIGN KEY (CarTypeID) REFERENCES CarType(CarTypeID)
 );
 
 CREATE TABLE pending_user_cars (
     user_car_id INT AUTO_INCREMENT PRIMARY KEY,
-    user_id INT NOT NULL,
+    username VARCHAR(50) NOT NULL,
     CarTypeID INT NOT NULL,
     purchase_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    FOREIGN KEY (username) REFERENCES users(username),
     FOREIGN KEY (CarTypeID) REFERENCES CarType(CarTypeID)
 );
 

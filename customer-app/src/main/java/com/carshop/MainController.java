@@ -35,7 +35,7 @@ public class MainController {
 
     @FXML
     public void initialize() {
-        username.setText(App.getCurrentUser().getUserName());
+        username.setText(App.getCurrentUser().getFName());
         loadMenuCarsFromDatabase();
         loadOwnedCarsFromDatabase();
         loadPendingCarsFromDatabase();

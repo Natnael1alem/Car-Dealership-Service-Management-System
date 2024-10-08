@@ -48,12 +48,12 @@ public class DatabaseManager {
     
     public static List<OwnedCar> getOwnedCars(User user) {
         List<OwnedCar> ownedCars = new ArrayList<>();
-        String sql = "SELECT * FROM PurchasedCarsList WHERE user_id = ?";
+        String sql = "SELECT * FROM PurchasedCarsList WHERE username = ?";
         
         try (Connection conn = getConnection();
              PreparedStatement  stmt = conn.prepareStatement(sql)) {
             
-            stmt.setInt(1, user.getUserID());
+            stmt.setString(1, user.getUsername());
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()) {
@@ -77,12 +77,12 @@ public class DatabaseManager {
 
     public static List<PendingCar> getPendingCars(User user) {
         List<PendingCar> cars = new ArrayList<>();
-        String sql = "SELECT * FROM PendingCarsList WHERE user_id = ?";
+        String sql = "SELECT * FROM PendingCarsList WHERE username = ?";
         
         try (Connection conn = getConnection();
              PreparedStatement  stmt = conn.prepareStatement(sql)) {
             
-            stmt.setInt(1, user.getUserID());
+            stmt.setString(1, user.getUsername());
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 PendingCar car = new PendingCar(
@@ -282,8 +282,9 @@ public class DatabaseManager {
             while (rs.next()) {
                 User user = new User(
                     rs.getString("username"),
+                    rs.getString("FName"),
+                    rs.getString("LName"),
                     rs.getString("email"),
-                    rs.getInt("user_id"),
                     rs.getString("password")
                 );
                 users.add(user);
@@ -339,6 +340,24 @@ public class DatabaseManager {
     }
 
 
+    public static void addUser(String username, String FName, String LName, String email, String password) {
+        String sql = "INSERT INTO users (username, FName, LName, email, password) VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            
+            pstmt.setString(1, username);
+            pstmt.setString(2, FName);
+            pstmt.setString(3, LName);
+            pstmt.setString(4, email);
+            pstmt.setString(5, password);
+            
+            pstmt.executeUpdate();
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void addCar(int modelID, int colorID, int engineID, int transmissionID ) {
         String sql = "INSERT INTO cars (ModelID, ColorID, EngineID, TransmissionID) VALUES (?, ?, ?, ?)";
@@ -452,14 +471,14 @@ public class DatabaseManager {
 
 
     public static void payCar(User user, PendingCar car) {
-        String addOwnership = "INSERT INTO user_cars (user_id, CarTypeID) VALUES (?, ?)";
+        String addOwnership = "INSERT INTO user_cars (username, CarTypeID) VALUES (?, ?)";
         String removeInventory = "DELETE FROM pending_user_cars WHERE user_car_id = ?";
 
         try (Connection conn = getConnection();
             PreparedStatement pstmt = conn.prepareStatement(addOwnership); 
             PreparedStatement pstmt2 = conn.prepareStatement(removeInventory)){
             
-            pstmt.setInt(1, user.getUserID());
+            pstmt.setString(1, user.getUsername());
             pstmt.setInt(2, car.getId());
 
             pstmt2.setInt(1, car.getItemID());
@@ -472,14 +491,14 @@ public class DatabaseManager {
     }
 
     public static void buyCar(User user, SelectedCar car) {
-        String addPending = "INSERT INTO pending_user_cars (user_id, CarTypeID) VALUES (?, ?)";
+        String addPending = "INSERT INTO pending_user_cars (username, CarTypeID) VALUES (?, ?)";
         String removeInventory = "DELETE FROM CarInventory WHERE CarInventoryID = ?";
 
         try (Connection conn = getConnection();
             PreparedStatement pstmt = conn.prepareStatement(addPending);
             PreparedStatement pstmt2 = conn.prepareStatement(removeInventory)) {
             
-            pstmt.setInt(1, user.getUserID());
+            pstmt.setString(1, user.getUsername());
             pstmt.setInt(2, car.getId());
 
             pstmt2.setInt(1, car.getItemID());

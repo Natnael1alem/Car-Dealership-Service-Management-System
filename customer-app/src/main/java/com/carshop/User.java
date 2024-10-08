@@ -1,15 +1,17 @@
 package com.carshop;
 
 public class User {
-    String userName;
+    String FName;
+    String LName;
     String password;
     String email;
-    int user_id;
+    String username;
 
-    public User (String userName, String email, int user_id, String password) {
-        this.userName = userName;
+    public User (String username, String FName, String LName, String email, String password) {
+        this.FName = FName;
+        this.LName = LName;
         this.email = email;
-        this.user_id = user_id;
+        this.username = username;
         this.password = password;
     }
 
@@ -17,12 +19,16 @@ public class User {
         
     }
 
-    public String getUserName (){
-        return this.userName;
+    public String getFName (){
+        return this.FName;
     }
 
-    public int getUserID (){
-        return this.user_id;
+    public String getLName() {
+        return this.LName;
+    }
+
+    public String getUsername (){
+        return this.username;
     }
 
     public String getUserPass () { 
