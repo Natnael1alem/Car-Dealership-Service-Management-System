@@ -1,0 +1,26 @@
+# Maven's target directory
+**/target/
+
+# Gradle build folder
+**/build/
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# IntelliJ IDEA project files
+.idea/
+*.iml
+
+# Eclipse project files
+.project
+.classpath
+.settings/
+
+# NetBeans project files
+nbproject/
+
+# MacOS system files
+.DS_Store
