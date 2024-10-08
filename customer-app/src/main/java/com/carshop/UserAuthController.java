@@ -65,26 +65,41 @@ public class UserAuthController {
                 }
             }
         }
-        
+
         l_message.setText("Incorrect user id or password");
         System.out.println("Incorrect user id or password");        
     }
 
     @FXML
     public void handleSignup() throws IOException{
-        String usernameField = newUsernameField.getText();
-        String fNameField = newFNameField.getText();
-        String lNameField = newLNameField.getText();
-        String emailField = newEmailField.getText();
-        String passField = newPassField.getText();
-        String confirmPassField = confirmNewPassField.getText();
+        String enteredUsername = newUsernameField.getText();
+        String enteredFName = newFNameField.getText();
+        String enteredLName = newLNameField.getText();
+        String enteredEmail = newEmailField.getText();
+        String enteredPass = newPassField.getText();
+        String enteredConfirmPass = confirmNewPassField.getText();
 
-        System.out.println("entered: " + usernameField + " " + fNameField + " " + lNameField + " " + passField + " " + confirmPassField);
+        System.out.println("entered: " + enteredUsername + " " + enteredFName + " " + enteredLName + " " + enteredPass + " " + enteredPass);
 
-        DatabaseManager.addUser(usernameField, fNameField, lNameField, emailField, passField);
-        
-        // s_message.setText("Form not complete or filled incorrectly");
-        // System.out.println("Form not complete or filled incorrectly");     
+        int availability = DatabaseManager.checkUsernameAndEmail(enteredUsername, enteredEmail);
+        StringBuffer message = new StringBuffer("");;
+
+        if (availability == 1){
+            message.append(" Username already taken");
+        } else if (availability == 2) {
+            message.append(" Email already used");
+        } else if (availability == 0) {
+            if (enteredUsername.equals("") || enteredFName.equals("") || enteredLName.equals("") || enteredEmail.equals("") || enteredPass.equals("")) {
+                message.append(" Form is not completed");
+            } else if (!enteredPass.equals(enteredConfirmPass)) {
+                message.append(" Password didnot Match");
+            } else {
+                DatabaseManager.addUser(enteredUsername, enteredFName, enteredLName, enteredEmail, enteredPass);
+            }
+        }
+
+        s_message.setText(message.toString());
+        // System.out.println("Form not complete or filled incorrectly");   
     }
 
     @FXML

@@ -359,6 +359,42 @@ public class DatabaseManager {
         }
     }
 
+    public static int checkUsernameAndEmail(String username, String email) {
+        String sql = "SELECT username, email FROM users WHERE username = ? OR email = ?";
+        
+        try (Connection conn = getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            // Set parameters for username and email
+            stmt.setString(1, username);
+            stmt.setString(2, email);
+
+            // Execute the query
+            ResultSet rs = stmt.executeQuery();
+
+            // Check results to see if username or email exists
+            while (rs.next()) {
+                String dbUsername = rs.getString("username");
+                String dbEmail = rs.getString("email");
+
+                // Check if the username is already taken
+                if (dbUsername.equals(username)) {
+                    return 1; //returns 1 if username is taken
+                }
+
+                // Check if the email is already used
+                if (dbEmail.equals(email)) {
+                    return 2; // returns 2 if email is taken
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return 0; // Return 0 if both username and email are available
+    }
+
     public static void addCar(int modelID, int colorID, int engineID, int transmissionID ) {
         String sql = "INSERT INTO cars (ModelID, ColorID, EngineID, TransmissionID) VALUES (?, ?, ?, ?)";
 
