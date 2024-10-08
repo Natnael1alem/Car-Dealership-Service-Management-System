@@ -31,22 +31,32 @@ public class LoginController {
     private TextField userIDField;
 
     @FXML
+    private TextField passwordField;
+
+    @FXML
     public void handleLogin() throws IOException{
-        String content = userIDField.getText();
+        String userField = userIDField.getText();
+        String passField = passwordField.getText();
+
+        System.out.println(userField + " " + passField);
         
         try {
-            int enteredUserID = Integer.parseInt(content);
+            int enteredUserID = Integer.parseInt(userField);
             for (User user : userList) {
+                System.out.println(user.getUserID() + " " + user.getUserPass());
                 if (enteredUserID == user.getUserID()) {
-                    App.setCurrentUser(user);
-                    App.showMainView();
-                    return;
+                    if (passField.equals(user.getUserPass())){
+                        System.out.println("Successfully Authenticated");
+                        App.setCurrentUser(user);
+                        App.showMainView();
+                        return;
+                    }
                 }
             }  
         } catch (NumberFormatException e) {
             e.printStackTrace();
         } 
-        System.out.println("No user ID was found");        
+        System.out.println("Incorrect user id or password");        
     }
    
 }

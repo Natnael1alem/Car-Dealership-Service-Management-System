@@ -23,7 +23,6 @@ public class DatabaseManager {
     }
 
 
-
     public static List<MenuCar> getMenuCars() {
         List<MenuCar> menuCars = new ArrayList<>();
         String sql = "SELECT * FROM MenuCarsList";
@@ -284,7 +283,8 @@ public class DatabaseManager {
                 User user = new User(
                     rs.getString("username"),
                     rs.getString("email"),
-                    rs.getInt("user_id")
+                    rs.getInt("user_id"),
+                    rs.getString("password")
                 );
                 users.add(user);
             }

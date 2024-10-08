@@ -58,11 +58,11 @@ INSERT INTO CarInventory (CarTypeID) VALUES
 
 -- Insert users
 INSERT INTO users (username, password, email) VALUES
-('john_doe', '12345678', 'john@example.com'),
-('jane_smith', '12345678', 'jane@example.com'),
-('bob_johnson', '12345678', 'bob@example.com'),
-('alice_williams', '12345678', 'alice@example.com'),
-('charlie_brown', '12345678', 'charlie@example.com');
+('john_doe', '1234', 'john@example.com'),
+('jane_smith', '1234', 'jane@example.com'),
+('bob_johnson', '1234', 'bob@example.com'),
+('alice_williams', '1234', 'alice@example.com'),
+('charlie_brown', '1234', 'charlie@example.com');
 
 -- Insert Accessory
 INSERT INTO Accessory (AccessoryName, description, Price) VALUES

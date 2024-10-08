@@ -6,10 +6,11 @@ public class User {
     String email;
     int user_id;
 
-    public User (String userName, String email, int user_id) {
+    public User (String userName, String email, int user_id, String password) {
         this.userName = userName;
         this.email = email;
         this.user_id = user_id;
+        this.password = password;
     }
 
     public void setID() {
@@ -22,5 +23,9 @@ public class User {
 
     public int getUserID (){
         return this.user_id;
+    }
+
+    public String getUserPass () { 
+        return this.password;
     }
 }
