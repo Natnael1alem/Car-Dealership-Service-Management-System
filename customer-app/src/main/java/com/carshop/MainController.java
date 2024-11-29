@@ -42,7 +42,6 @@ public class MainController {
         //loadAccessoriesFromDatabase();
     }
 
-
     
     private void loadMenuCarsFromDatabase() {
         menuCarList.clear();

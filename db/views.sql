@@ -1,6 +1,5 @@
 USE carshopdb;
 
-
 CREATE VIEW InventoryCarsList 
 AS SELECT 
 	m.ModelName, m.ModelID, 
