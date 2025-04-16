@@ -43,7 +43,7 @@ AS SELECT
 	m.ModelName, m.ModelID, 
     mk.MakeName, mk.MakeID,
 --     c.ColorName, c.ColorID,
-    m.ModelDescription
+    m.image, m.ModelDescription
 FROM CarInventory ci
 JOIN CarType ct ON ci.CarTypeID = ct.CarTypeID
 JOIN Model m ON ct.ModelID = m.ModelID 
@@ -60,7 +60,7 @@ AS SELECT
     c.ColorName, c.ColorID,
     e.EngineType, e.EngineID,
     t.TransmissionType, t.TransmissionID,
-    m.ModelDescription,
+    m.ModelDescription, m.image,
     user_car_id, uc.CarTypeID,
     ct.Price
 FROM  user_cars uc 
@@ -81,6 +81,7 @@ AS SELECT
     e.EngineType, e.EngineID,
     t.TransmissionType, t.TransmissionID,
     user_car_id, puc.CarTypeID,
+    m.ModelDescription, m.image,
     ct.Price
 FROM  pending_user_cars puc 
 JOIN  CarType ct ON puc.CarTypeID = ct.CarTypeID 

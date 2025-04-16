@@ -30,6 +30,7 @@ public class OwnedCarCardController {
 
     private void updateCardView() {
         name.setText(ownedCar.getMake() + " " + ownedCar.getModel());
+        carImage.setImage(ownedCar.getImg());
 
         // You can set an image here if you have one
         // carImage.setImage(new Image("path/to/image.jpg"));

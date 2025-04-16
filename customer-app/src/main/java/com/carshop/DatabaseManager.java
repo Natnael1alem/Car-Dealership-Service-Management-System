@@ -1,12 +1,13 @@
 package com.carshop;
 
 import java.sql.*;
+import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseManager {
     private static final String URL = "jdbc:mysql://localhost:3306/carshopdb";
-    private static final String USER = "user";
+    private static final String USER = "root";
     private static final String PASSWORD = "password";
 
     public static Connection getConnection() throws SQLException {
@@ -36,7 +37,8 @@ public class DatabaseManager {
                     rs.getString("ModelName"),
                     rs.getInt("ModelID"),
                     rs.getString("MakeName"),
-                    rs.getString("ModelDescription")
+                    rs.getString("ModelDescription"),
+                    rs.getBlob("image")
                 );
                 menuCars.add(menuCar);
             }
@@ -65,7 +67,8 @@ public class DatabaseManager {
                     rs.getString("ColorName"),
                     rs.getString("EngineType"),
                     rs.getString("TransmissionType"),
-                    rs.getString("ModelDescription")
+                    rs.getString("ModelDescription"),
+                    rs.getBlob("image")
                 );
                 ownedCars.add(ownedCar);
             }
@@ -93,7 +96,8 @@ public class DatabaseManager {
                     rs.getString("ColorName"),
                     rs.getString("EngineType"),
                     rs.getString("TransmissionType"),
-                    rs.getDouble("Price")
+                    rs.getDouble("Price"),
+                    rs.getBlob("image")
                 );
                 cars.add(car);
             }

@@ -30,6 +30,7 @@ public class MenuCarCardController {
 
     private void updateCardView() {
         name.setText(menuCar.getMake() + " " + menuCar.getModel());
+        carImage.setImage(menuCar.getImg());
 
         // You can set an image here if you have one
         // carImage.setImage(new Image("path/to/image.jpg"));

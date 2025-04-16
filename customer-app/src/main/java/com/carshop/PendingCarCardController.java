@@ -30,6 +30,8 @@ public class PendingCarCardController {
 
     private void updateCardView() {
         name.setText(pendingCar.getMake() + " " + pendingCar.getModel());
+        carImage.setImage(pendingCar.getImg());
+
 
         // You can set an image here if you have one
         // carImage.setImage(new Image("path/to/image.jpg"));
